@@ -25,20 +25,20 @@ main {
 }
 
 .grid-container {
-    padding: 2em;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-fit columns */
+    gap: 1em;
+    padding: 1em;
+    max-width: 100%; /* Ensure grid container fills available space */
 }
 
 .grid-container_book {
-    width: 300px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #ffffff;
+    max-width: 300px;
 }
 
 .grid-container_book:hover {
@@ -75,18 +75,4 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@media (max-width: 953px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Stacks items in a single column */
-        padding: 1em;
-    }
-}
-
-@media (max-width: 480px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Stacks items in a single column */
-        padding: 1em;
-    }
 }
