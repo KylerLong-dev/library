@@ -14,11 +14,14 @@ function Book(title, author, pages, read) {
   }
 }
 
-const bookOne = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages", "Not Read Yet");
-
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(book) {
+  return myLibrary.push(book);
 }
+
+const newBook = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages", "Not Read Yet");
+
+addBookToLibrary(newBook);
+console.log(myLibrary);
 
 function displayBooks () {
 
