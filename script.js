@@ -14,15 +14,29 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary(book) {
-  return myLibrary.push(book);
+function addBookToLibrary(title, author, pages, read) {
+  const newBook = new Book(title, author, pages, read);
+  return myLibrary.push(newBook);
 }
-
-const newBook = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages", "Not Read Yet");
-
-addBookToLibrary(newBook);
-console.log(myLibrary);
 
 function displayBooks () {
+    const bookContainer = document.querySelector(".grid-container");
+    
+    myLibrary.forEach((book) => {
+      const bookCard = document.createElement("div");
+      bookCard.classList.add("grid-container_book");
+      
+      bookCard.innerHTML = `
+        <img>
+        <h3>${book.title}</h3>
+        <p>${book.author}</p>
+        <p>${book.pages}</p>
+        <p>${book.read}</p>
+        `
 
+      bookContainer.appendChild(bookCard);
+    })
 }
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295 pages", "Not Read Yet");
+displayBooks();
