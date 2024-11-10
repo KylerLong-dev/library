@@ -13,7 +13,6 @@ body {
 
 header {
     background-color: #0c4a6e; 
-    border-bottom: 1px solid #f0f9ff;
     color: #f0f9ff;
     display: flex;
     justify-content: center;
@@ -26,19 +25,24 @@ main {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-fit columns */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 1em;
     padding: 1em;
-    max-width: 100%; /* Ensure grid container fills available space */
+    max-width: 100%; 
 }
 
 .grid-container_book {
+    border: 1px solid #0c4a6e; 
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #ffffff;
+    background-color: whitesmoke;
     max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em;
 }
 
 .grid-container_book:hover {
@@ -46,29 +50,44 @@ main {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.grid-container_book img {
-    width: 100%;         
-    height: 200px;        
-    object-fit: contain;  
-    border-radius: 5px;   
-    background-color: #f0f0f0;       
-}
-
-.grid-container_book .book-content {
-    padding: 20px;
-}
-
-.grid-container_book .book-content h3 {
-    font-size: 1.25rem;
+.grid-container_book h3{
+    font-size: 1.5rem;
     margin: 0 0 10px;
     color: #333;
 }
 
-.grid-container_book .book-content p {
+.grid-container_book p{
     margin: 0;
     color: #666;
-    font-size: 0.95rem;
+    font-size: 1em;
     line-height: 1.5;
+}
+
+.new-book {
+    background-color: #bae6fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2em;
+}
+
+.new-book button {
+    padding: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-weight: bold;
+    background: linear-gradient(to right, #0c4a6e, #0369a1);
+    border-radius: 50vh;
+    border: none;
+    width: 20em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.new-book button:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -77,4 +96,5 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1em;
 }
