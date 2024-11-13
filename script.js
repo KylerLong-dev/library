@@ -33,9 +33,12 @@ function displayBook() {
 
     bookCard.innerHTML = `
       <h3>${book.title}</h3>
-      <p>${book.author}</p>
-      <p>${book.pages} pages</p>
-      <p>${readStatus}</p>
+      <div class="text">
+        <p>${book.author}</p>
+        <p>${book.pages} pages</p>
+        <p>${readStatus}</p>
+      </div>
+      <div class="remove"><button>Remove</button></div>
       `;
     bookContainer.appendChild(bookCard);
   })
