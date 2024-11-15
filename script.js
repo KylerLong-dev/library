@@ -13,37 +13,52 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook); 
 }
 
+//Display DOM Elements for Books
 
 function displayBook() {
   const bookContainer = document.querySelector(".grid-container");
 
   bookContainer.innerHTML = "";
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("grid-container_book");
-
-    let readStatus = "";
-    if (book.read) {
-      readStatus = "Read Status: Complete!";
-    }
-    else {
-      readStatus = "Read Status: Not Read";
-    }
+    bookCard.setAttribute("data-index", index);
 
     bookCard.innerHTML = `
       <h3>${book.title}</h3>
       <div class="text">
-        <p>${book.author}</p>
+        <p>By: ${book.author}</p>
         <p>${book.pages} pages</p>
-        <p>${readStatus}</p>
       </div>
-      <div class="remove"><button>Remove</button></div>
+      <div class="remove">
+        <button class="toggle-read">${book.read ? "Read" : "Not Read"}</button>
+        <button class="remove-btn">Remove</button>
+      </div>
       `;
     bookContainer.appendChild(bookCard);
+
+    const removeBtn = bookCard.querySelector(".remove-btn");
+    removeBtn.addEventListener("click", () => {
+      myLibrary.splice(index, 1);
+      displayBook();
+    })
+
+    const toggleBtn = bookCard.querySelector(".toggle-read");
+    toggleBtn.addEventListener("click", () => {
+      book.read = !book.read;
+      if (book.read) {
+        toggleBtn.textContent = "Read";
+      }
+      else {
+        toggleBtn.textContent = "Unread";
+      }
+    })
+
   })
 }
 
+//Add book to library button
 const addBookBtn = document.querySelector(".new-book_btn"); 
 const sideBar = document.querySelector(".sidebar");
 
@@ -53,6 +68,8 @@ addBookBtn.addEventListener("click", () => {
   }
 })
 
+
+//Collect user input via form in the sidebar
 const form = document.querySelector(".sidebar-form")
 
 form.addEventListener("submit", (event) => {
@@ -61,7 +78,7 @@ form.addEventListener("submit", (event) => {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
-  const read = document.getElementById("finished").checked; 
+  const read = document.getElementById("read").check; 
   
   addBookToLibrary(title, author, pages, read);
   displayBook();
