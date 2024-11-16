@@ -1,4 +1,3 @@
-
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -24,6 +23,8 @@ function displayBook() {
     const bookCard = document.createElement("div");
     bookCard.classList.add("grid-container_book");
     bookCard.setAttribute("data-index", index);
+    
+    const readStatus = book.read ? "Read" : "Not Read"; 
 
     bookCard.innerHTML = `
       <h3>${book.title}</h3>
@@ -32,7 +33,7 @@ function displayBook() {
         <p>${book.pages} pages</p>
       </div>
       <div class="remove">
-        <button class="toggle-read">${book.read ? "Read" : "Not Read"}</button>
+        <button class="toggle-read">${readStatus}</button>
         <button class="remove-btn">Remove</button>
       </div>
       `;
@@ -51,7 +52,7 @@ function displayBook() {
         toggleBtn.textContent = "Read";
       }
       else {
-        toggleBtn.textContent = "Unread";
+        toggleBtn.textContent = "Not Read";
       }
     })
 
@@ -68,7 +69,6 @@ addBookBtn.addEventListener("click", () => {
   }
 })
 
-
 //Collect user input via form in the sidebar
 const form = document.querySelector(".sidebar-form")
 
@@ -78,7 +78,7 @@ form.addEventListener("submit", (event) => {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
-  const read = document.getElementById("read").check; 
+  const read = document.getElementById("read").checked; 
   
   addBookToLibrary(title, author, pages, read);
   displayBook();
